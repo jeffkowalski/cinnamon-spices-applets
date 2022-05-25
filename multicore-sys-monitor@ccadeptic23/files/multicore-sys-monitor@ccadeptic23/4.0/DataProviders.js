@@ -94,8 +94,8 @@ MultiCpuDataProvider.prototype = {
     // Copy gtop arrays, for some reason accessing them causes a continuous memory leak.
     let xcpu_total = this.gtop.xcpu_total.slice();
     let xcpu_nice = this.gtop.xcpu_nice.slice();
-    let xcpu_sys = this.gtop.xcpu_sys.slice()
-    let xcpu_user = this.gtop.xcpu_user.slice()
+    let xcpu_sys = this.gtop.xcpu_sys.slice();
+    let xcpu_user = this.gtop.xcpu_user.slice();
     // calculate ticks since last call
     for (let i = 0; i < this.CPUCount; i++) {
       let dtotal = xcpu_total[i] - this.CPUListTotal[i];
@@ -423,7 +423,7 @@ DiskDataProvider.prototype = {
       }
       let deviceName = this.mounts[i].get_name();
       let drive = this.mounts[i].get_drive();
-      let isDisk =  drive && !drive.is_media_removable()
+      let isDisk =  drive && !drive.is_media_removable();
       let mountRoot = this.mounts[i].get_root();
       // device is enabled, and is a disk
       if (isDisk && this.disabledDevices.indexOf(deviceName) === -1) {
