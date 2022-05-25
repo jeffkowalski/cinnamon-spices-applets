@@ -1,5 +1,6 @@
 const Gio = imports.gi.Gio;
 const GIRepository = imports.gi.GIRepository;
+const GLib = imports.gi.GLib;
 
 let _, tryFn, GTop;
 if (typeof require !== 'undefined') {
@@ -351,16 +352,38 @@ DiskDataProvider.prototype = {
       this.currentReadings[i].tooltipRead = Math.round((newRead / secondsSinceLastUpdate));
       this.currentReadings[i].tooltipWrite = Math.round((newWrite / secondsSinceLastUpdate));
       // Push it to the array read by the graphs as kilobytes.
-      this.currentReadings[i].readingRatesList[0] = Math.round((newRead / 1048576 / secondsSinceLastUpdate));
-      this.currentReadings[i].readingRatesList[1] = Math.round((newWrite / 1048576 / secondsSinceLastUpdate));
+      this.currentReadings[i].readingRatesList[0] = Math.round((newRead / 1024 / secondsSinceLastUpdate));
+      this.currentReadings[i].readingRatesList[1] = Math.round((newWrite / 1024 / secondsSinceLastUpdate));
+    }
+  },
+  getDiskLoad: function() {
+    try {
+      let stats_data = GLib.file_get_contents("/sys/block/nvme0n1/stat").toString().trim().split(/\s+/);
+      let read = stats_data[3] * 512;
+      let written = stats_data[7] * 512;
+      return [read, written];
+    }
+    catch (e) {
+      global.logError("Exception in getDiskLoad(): " + e.message);
     }
   },
   getDiskRW: function() {
+    /*
     for (let i = 0; i < this.currentReadings.length; i++) {
       GTop.glibtop_get_fsusage(this.gtopFSUsage, this.currentReadings[i].path);
       this.currentReadings[i].read = this.gtopFSUsage.read * this.gtopFSUsage.block_size;
       this.currentReadings[i].write = this.gtopFSUsage.write * this.gtopFSUsage.block_size;
     }
+    */
+
+    // This a specific workaround for /sys/block/nvme0n1 taken from
+    // hwmonitor@sylfurd/3.2/providers.js
+    // See GTop SSD/LVM/LUKS problem's details in
+    // https://github.com/linuxmint/cinnamon-spices-applets/issues/2801
+
+    let [read, written] = this.getDiskLoad();
+    this.currentReadings[0].read = read;
+    this.currentReadings[0].write = written;
   },
   setDisabledDevices: function(disabledDevicesList) {
     this.disabledDevices = disabledDevicesList;
@@ -384,12 +407,13 @@ DiskDataProvider.prototype = {
     return toolTipString;
   },
   getDiskDevices: function() {
+    let [read, written] = this.getDiskLoad();
     this.currentReadings = [{
       id: '/',
       path: '/',
       read: 0,
       write: 0,
-      lastReading: [0, 0],
+      lastReading: [read, written],
       readingRatesList: []
     }];
 
