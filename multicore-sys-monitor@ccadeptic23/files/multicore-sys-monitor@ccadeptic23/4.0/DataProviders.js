@@ -22,6 +22,8 @@ tryFn(function() {
   GTop = imports.gi.GTop;
 });
 
+const spaces = 12;
+
 const formatBytes = (bytes, decimals=2)=>{
   if (bytes < 1) {
     return '0'.padStart(spaces/2 - 1) + '.00'.padEnd(spaces/2 - 1) + 'B'.padStart(3, ' ') + rate;
@@ -44,7 +46,6 @@ const formatBytes = (bytes, decimals=2)=>{
 
 const indent = '    ';
 const rate = _('/s');
-const spaces = 12;
 
 function MultiCpuDataProvider() {
   this._init();
@@ -173,11 +174,12 @@ SwapDataProvider.prototype = {
     this.name = _('SWAP');
     this.isEnabled = true;
     this.gtopSwap = new GTop.glibtop_swap();
-    this.swapusage = 0;
+    this.swapusage = true;
     this.currentReadings = [0];
   },
   getData: function() {
     GTop.glibtop_get_swap(this.gtopSwap);
+    this.swapusage = parseInt(this.gtopSwap.total) !== 0;
     this.currentReadings[0] = this.gtopSwap.used / this.gtopSwap.total;
     // Check if swap is actually present
     if (isNaN(this.currentReadings)) {
@@ -185,7 +187,8 @@ SwapDataProvider.prototype = {
     }
   },
   getTooltipString: function() {
-    if (!this.isEnabled || !this.currentReadings[0]) {
+    //if (!this.isEnabled || !this.currentReadings[0]) { //Replaced by:
+    if (!this.isEnabled || !this.swapusage) {
       return '';
     }
     let toolTipString = _('------------ Swap ------------') + '\n';
