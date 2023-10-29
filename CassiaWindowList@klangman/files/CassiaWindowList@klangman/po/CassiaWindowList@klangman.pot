@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-24 15:07-0400\n"
+"POT-Creation-Date: 2023-10-23 10:26-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,24 +17,29 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: 4.0/applet.js:1919
+#: 4.0/applet.js:1330 4.0/applet.js:2507 4.0/applet.js:3984 4.0/applet.js:4046
+#: 4.0/applet.js:4069 4.0/applet.js:4153
+msgid "all buttons"
+msgstr ""
+
+#: 4.0/applet.js:2239
 msgid "Applet Preferences"
 msgstr ""
 
-#: 4.0/applet.js:1923
+#: 4.0/applet.js:2243
 msgid "About..."
 msgstr ""
 
-#: 4.0/applet.js:1927
+#: 4.0/applet.js:2247
 msgid "Configure..."
 msgstr ""
 
-#: 4.0/applet.js:1931
+#: 4.0/applet.js:2251
 #, javascript-format
 msgid "Remove '%s'"
 msgstr ""
 
-#: 4.0/applet.js:1933
+#: 4.0/applet.js:2253
 msgid "Do you really want to remove this instance of CassiaWindowList?"
 msgstr ""
 
@@ -44,115 +49,141 @@ msgstr ""
 #. 4.0->settings-schema.json->mouse-action-btn2->options
 #. 4.0->settings-schema.json->mouse-action-btn8->options
 #. 4.0->settings-schema.json->mouse-action-btn9->options
-#: 4.0/applet.js:1942
+#: 4.0/applet.js:2262
 msgid "Open new window"
 msgstr ""
 
-#: 4.0/applet.js:1948
+#: 4.0/applet.js:2270
+msgid "Remove from panel"
+msgstr ""
+
+#: 4.0/applet.js:2272
+msgid "Remove from this workspace"
+msgstr ""
+
+#: 4.0/applet.js:2278
+msgid "Pin to panel"
+msgstr ""
+
+#: 4.0/applet.js:2280
 msgid "Pin to this workspace"
 msgstr ""
 
-#: 4.0/applet.js:1964
+#: 4.0/applet.js:2321
 msgid "Pin to other workspaces"
 msgstr ""
 
-#: 4.0/applet.js:1988
+#: 4.0/applet.js:2342
 msgid "Pin to all workspaces"
 msgstr ""
 
-#: 4.0/applet.js:2013 4.0/applet.js:2186
+#: 4.0/applet.js:2360
+msgid "Pin to launcher"
+msgstr ""
+
+#: 4.0/applet.js:2378 4.0/applet.js:2561
 msgid "Add new Hotkey for"
 msgstr ""
 
-#: 4.0/applet.js:2027
+#: 4.0/applet.js:2392
 msgid "Recent files"
 msgstr ""
 
-#: 4.0/applet.js:2051
+#: 4.0/applet.js:2416
 msgid "Places"
 msgstr ""
 
-#: 4.0/applet.js:2093
+#: 4.0/applet.js:2458
 msgid "Only on this workspace"
 msgstr ""
 
-#: 4.0/applet.js:2095
+#: 4.0/applet.js:2460
 msgid "Visible on all workspaces"
 msgstr ""
 
-#: 4.0/applet.js:2096
+#: 4.0/applet.js:2461
 msgid "Move to another workspace"
 msgstr ""
 
-#: 4.0/applet.js:2115
+#: 4.0/applet.js:2480
 msgid "Move to another monitor"
 msgstr ""
 
-#: 4.0/applet.js:2123
+#: 4.0/applet.js:2488
 msgid "Monitor"
 msgstr ""
 
-#: 4.0/applet.js:2151
+#: 4.0/applet.js:2516
 msgid "unassigned"
 msgstr ""
 
-#: 4.0/applet.js:2162 4.0/applet.js:2183
+#: 4.0/applet.js:2527 4.0/applet.js:2558
 msgid "Assign window to a hotkey"
 msgstr ""
 
-#: 4.0/applet.js:2206
+#: 4.0/applet.js:2581
 msgid "Change application label contents"
 msgstr ""
 
-#: 4.0/applet.js:2209
+#: 4.0/applet.js:2584
 msgid "Remove custom setting"
 msgstr ""
 
-#: 4.0/applet.js:2216
+#: 4.0/applet.js:2591
 msgid "Use window title"
 msgstr ""
 
-#: 4.0/applet.js:2223
+#: 4.0/applet.js:2598
 msgid "Use application name"
 msgstr ""
 
-#: 4.0/applet.js:2230
+#: 4.0/applet.js:2605
 msgid "No label"
 msgstr ""
 
-#: 4.0/applet.js:2241
-msgid "Ungroup windows"
+#: 4.0/applet.js:2616
+msgid "Ungroup application windows"
 msgstr ""
 
-#: 4.0/applet.js:2252
-msgid "Group windows"
+#: 4.0/applet.js:2625
+msgid "Group application windows"
 msgstr ""
 
-#: 4.0/applet.js:2262
+#: 4.0/applet.js:2638
 msgid "Automatic grouping/ungrouping"
 msgstr ""
 
-#: 4.0/applet.js:2291
+#. 4.0->settings-schema.json->preview-middle-click->options
+#. 4.0->settings-schema.json->preview-back-click->options
+#. 4.0->settings-schema.json->preview-forward-click->options
+#. 4.0->settings-schema.json->mouse-action-btn2->options
+#. 4.0->settings-schema.json->mouse-action-btn8->options
+#. 4.0->settings-schema.json->mouse-action-btn9->options
+#: 4.0/applet.js:2668
+msgid "Move titlebar on to screen"
+msgstr ""
+
+#: 4.0/applet.js:2673
 msgid "Restore"
 msgstr ""
 
-#: 4.0/applet.js:2295
+#: 4.0/applet.js:2677
 msgid "Minimize"
 msgstr ""
 
-#: 4.0/applet.js:2301
+#: 4.0/applet.js:2683
 msgid "Unmaximize"
 msgstr ""
 
-#: 4.0/applet.js:2308
+#: 4.0/applet.js:2690
 msgid "Close others"
 msgstr ""
 
-#: 4.0/applet.js:2319
+#: 4.0/applet.js:2701
 msgid "Close all"
 msgstr ""
 
-#: 4.0/applet.js:2328
+#: 4.0/applet.js:2710
 msgid "Close"
 msgstr ""
 
@@ -434,8 +465,38 @@ msgid ""
 "Launcher: Only pinned button are shown, behaves like a panel launcher."
 msgstr ""
 
+#. 4.0->settings-schema.json->display-pinned->options
+msgid "Disabled"
+msgstr ""
+
+#. 4.0->settings-schema.json->display-pinned->options
+msgid "Unique for each workspace"
+msgstr ""
+
+#. 4.0->settings-schema.json->display-pinned->options
+msgid "Common across workspaces"
+msgstr ""
+
 #. 4.0->settings-schema.json->display-pinned->description
-msgid "Allow pinning of window list buttons"
+msgid "Pinning of window list buttons"
+msgstr ""
+
+#. 4.0->settings-schema.json->display-pinned->tooltip
+msgid ""
+"Controls whether window list buttons can be pinned, and whether each "
+"workspace has a unique set of pinned buttons or one common set shared across "
+"all workspaces. When in \"Common across workspaces\" mode the order of the "
+"pinned buttons is also maintained across workspaces."
+msgstr ""
+
+#. 4.0->settings-schema.json->synchronize-pinned->description
+msgid "Synchronize launcher buttons across all workspaces"
+msgstr ""
+
+#. 4.0->settings-schema.json->synchronize-pinned->tooltip
+msgid ""
+"If enabled, the number and order of launcher buttons on the panel will be "
+"synchronize across all workspaces."
 msgstr ""
 
 #. 4.0->settings-schema.json->show-windows-for-current-monitor->description
@@ -512,6 +573,19 @@ msgstr ""
 
 #. 4.0->settings-schema.json->number-of-unshrunk-previews->description
 msgid "Default thumbnail window size"
+msgstr ""
+
+#. 4.0->settings-schema.json->menu-all-windows-of-pool->description
+#. 4.0->settings-schema.json->menu-all-windows-of-auto->description
+msgid "Show thumbnails for all windows of an application pool"
+msgstr ""
+
+#. 4.0->settings-schema.json->menu-all-windows-of-pool->tooltip
+#. 4.0->settings-schema.json->menu-all-windows-of-auto->tooltip
+msgid ""
+"If enabled, a popup menu will contain all the application windows in the "
+"application pool rather then just the selected window within the application "
+"pool"
 msgstr ""
 
 #. 4.0->settings-schema.json->preview-timeout-show->description
@@ -619,6 +693,24 @@ msgstr ""
 #. 4.0->settings-schema.json->mouse-action-btn2->options
 #. 4.0->settings-schema.json->mouse-action-btn8->options
 #. 4.0->settings-schema.json->mouse-action-btn9->options
+msgid "Move to previous workspace"
+msgstr ""
+
+#. 4.0->settings-schema.json->preview-middle-click->options
+#. 4.0->settings-schema.json->preview-back-click->options
+#. 4.0->settings-schema.json->preview-forward-click->options
+#. 4.0->settings-schema.json->mouse-action-btn2->options
+#. 4.0->settings-schema.json->mouse-action-btn8->options
+#. 4.0->settings-schema.json->mouse-action-btn9->options
+msgid "Move to next workspace"
+msgstr ""
+
+#. 4.0->settings-schema.json->preview-middle-click->options
+#. 4.0->settings-schema.json->preview-back-click->options
+#. 4.0->settings-schema.json->preview-forward-click->options
+#. 4.0->settings-schema.json->mouse-action-btn2->options
+#. 4.0->settings-schema.json->mouse-action-btn8->options
+#. 4.0->settings-schema.json->mouse-action-btn9->options
 msgid "Visible on this/all workspaces"
 msgstr ""
 
@@ -664,7 +756,34 @@ msgstr ""
 #. 4.0->settings-schema.json->mouse-action-btn2->options
 #. 4.0->settings-schema.json->mouse-action-btn8->options
 #. 4.0->settings-schema.json->mouse-action-btn9->options
+msgid "Move to previous monitor"
+msgstr ""
+
+#. 4.0->settings-schema.json->preview-middle-click->options
+#. 4.0->settings-schema.json->preview-back-click->options
+#. 4.0->settings-schema.json->preview-forward-click->options
+#. 4.0->settings-schema.json->mouse-action-btn2->options
+#. 4.0->settings-schema.json->mouse-action-btn8->options
+#. 4.0->settings-schema.json->mouse-action-btn9->options
+msgid "Move to next monitor"
+msgstr ""
+
+#. 4.0->settings-schema.json->preview-middle-click->options
+#. 4.0->settings-schema.json->preview-back-click->options
+#. 4.0->settings-schema.json->preview-forward-click->options
+#. 4.0->settings-schema.json->mouse-action-btn2->options
+#. 4.0->settings-schema.json->mouse-action-btn8->options
+#. 4.0->settings-schema.json->mouse-action-btn9->options
 msgid "Move to current/next monitor"
+msgstr ""
+
+#. 4.0->settings-schema.json->preview-middle-click->options
+#. 4.0->settings-schema.json->preview-back-click->options
+#. 4.0->settings-schema.json->preview-forward-click->options
+#. 4.0->settings-schema.json->mouse-action-btn2->options
+#. 4.0->settings-schema.json->mouse-action-btn8->options
+#. 4.0->settings-schema.json->mouse-action-btn9->options
+msgid "Pin to panel toggle"
 msgstr ""
 
 #. 4.0->settings-schema.json->preview-middle-click->options
@@ -689,15 +808,23 @@ msgid "Thumbnail window forward button action"
 msgstr ""
 
 #. 4.0->settings-schema.json->grouped-mouse-action-btn1->options
+#. 4.0->settings-schema.json->launcher-mouse-action-btn1->options
 msgid "Restore/Minimize most recent window"
 msgstr ""
 
 #. 4.0->settings-schema.json->grouped-mouse-action-btn1->options
+#. 4.0->settings-schema.json->launcher-mouse-action-btn1->options
 msgid "Restore then cycle windows"
 msgstr ""
 
 #. 4.0->settings-schema.json->grouped-mouse-action-btn1->options
+#. 4.0->settings-schema.json->launcher-mouse-action-btn1->options
 msgid "Show thumbnail menu"
+msgstr ""
+
+#. 4.0->settings-schema.json->grouped-mouse-action-btn1->options
+#. 4.0->settings-schema.json->launcher-mouse-action-btn1->options
+msgid "Restore or hold for thumbnail menu"
 msgstr ""
 
 #. 4.0->settings-schema.json->grouped-mouse-action-btn1->description
@@ -708,6 +835,20 @@ msgstr ""
 msgid ""
 "Action taken when using the left mouse button on a window list entry for a "
 "group of windows"
+msgstr ""
+
+#. 4.0->settings-schema.json->launcher-mouse-action-btn1->options
+msgid "New window or hold for thumbnail menu"
+msgstr ""
+
+#. 4.0->settings-schema.json->launcher-mouse-action-btn1->description
+msgid "Left button action (with running windows)"
+msgstr ""
+
+#. 4.0->settings-schema.json->launcher-mouse-action-btn1->tooltip
+msgid ""
+"Action taken when using the left mouse button on a launcher button with one "
+"or more running windows"
 msgstr ""
 
 #. 4.0->settings-schema.json->mouse-action-btn2->options
@@ -827,17 +968,39 @@ msgid ""
 "a desktop file name"
 msgstr ""
 
+#. 4.0->settings-schema.json->hotkey-sequence->description
+msgid "Smart numeric hotkeys (using \"1\" automatically extends to 1-9)"
+msgstr ""
+
+#. 4.0->settings-schema.json->hotkey-sequence->tooltip
+msgid ""
+"If enabled, hotkeys ending with the \"1\" key (i.e. Alt+1) will "
+"automatically create hotkeys 1 through 9 (i.e. Alt+1 through Alt+9). The "
+"first 9 windows of the assigned application, as ordered on the window-list, "
+"will be activated by the 9 hotkeys."
+msgstr ""
+
+#. 4.0->settings-schema.json->hotkey-grave-help->description
+msgid "Use modifier(s) + ` hotkey to show hotkey hint bubbles"
+msgstr ""
+
+#. 4.0->settings-schema.json->hotkey-grave-help->tooltip
+msgid ""
+"If enabled, The hotkey modifier(s) + ` will be registered for each unique "
+"modifier set defined in the hotkey list. Using these hotkeys will temporally "
+"show a hotkey hint bubble over the button icons."
+msgstr ""
+
 #. 4.0->settings-schema.json->hotkey-help->description
 msgid ""
 "Hotkeys can be assigned to a window in two ways:\n"
-"1. Manual:  Use the \"Assign window to a hotkey\" item in a button context "
-"menu.\n"
-"2. Automatic:  Enter a \"Description\" matching an application name or "
-"desktop file. For example: \"Google Chrome\" or \"firefox.desktop\"\n"
-"\n"
-"Note: 1) If a hotkey is not working, it's possible that a key combination is "
-"already assigned elsewhere. 2) If you remove or rearrange any hotkeys, "
-"manual window assignments may need to be reassigned"
+"1) Manual: Use \"Assign window to a hotkey\" in the button context menu.\n"
+"2) Automatic:  Enter a \"Description\" matching an application name or "
+"desktop file.\n"
+"Note: 1) Hotkey not working? it's possible the key combination is already "
+"assigned elsewhere. 2) If you remove or rearrange hotkeys, manual hotkey "
+"assignments might need to be reassigned. 3) Hotkeys associated with desktop "
+"files can not be manually assigned."
 msgstr ""
 
 #. 4.0->settings-schema.json->adv-mouse-list->columns->title

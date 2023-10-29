@@ -1,3 +1,14 @@
+### v1.7.0~20231014
+  * Try distinguishing artist and song name in tooltip.
+
+### v1.6.0~20231004
+  * More than 300 radio stations in Radio3.0_EXAMPLES.json!
+
+### v1.5.0~20230722
+  * New icon. Author: @Hilyxx
+
+### v1.4.2~20230718
+  * Add mpv-mpris to dependencies.
 ### v1.4.1~20230613
   * Minor bugfix for Cinnamon 5.8.
 
