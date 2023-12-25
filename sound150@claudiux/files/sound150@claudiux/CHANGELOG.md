@@ -1,4 +1,17 @@
-## CHANGELOG
+### v4.6.0~20231216
+  * Adds the ability to display the volume level near the icon.
+
+### v4.5.0~20231124
+  * Adds a shift-middle click action (mute/unmute microphone by default). Thanks to @sphh!
+
+### v4.4.1~20231103
+  * Update the contextual menu when flipping the 'Mute input' switch in the settings.
+
+### v4.4.0~20231101
+  * Allow to always show the 'Mute input' switch in contextual menu.
+
+### v4.3.0~20231026
+  * Fixes 5005: Icon color changing with theme
 
 ### v4.2.0~20231012
   * Try to distinguish between the artist and the song title.

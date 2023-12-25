@@ -11,6 +11,7 @@ CustomPlaces@Nicolas01/**                          @Nicolas01
 IntelTurboBoost@wsmenezes/**                       @wsmenezes
 InternetTimeApplet@stefan/**                       @stefan12O
 Mint-Unsplash-Background@omidmaldar/**             @omidmaldar
+MonitorInputSource@klangman/**                     @klangman
 MuteToggler@jebeaudet.com/**                       @jebeaudet
 Radio3.0@claudiux/**                               @claudiux
 SW++@mohammad-sn/**                                @mohammad-sn
@@ -22,6 +23,7 @@ ShutdownApplet@DeathMD/**                          @icarter09
 ShutdownMenuWithIcons@LLOBERA/**                   @Nicolas01
 SpicesUpdate@claudiux/**                           @claudiux
 VPN-Sentinel@claudiux/**                           @claudiux
+anime-wallpaper@flyflyan/**                        @fly206
 app-launcher@mchilli/**                            @mchilli
 asl@santiago/**                                    @SamBurgos
 backgroundroll@Sokawaii25/**                       @Sokawaii25
@@ -69,7 +71,7 @@ googledrive@pbojan/**                              @pbojan
 gpaste-reloaded@feuerfuchs.eu/**                   @feuerfuchs
 gpumonitor@axel358/**                              @axel358
 graphicsCenter@scollins/**                         @collinss
-healthyeyes@ipolozov/**                            @ipolozov
+healthyeyes@ipolozov/**                            @GingerGigiCat
 hideable-applets@cardsurf/**                       @cardsurf
 internet-indicator@sangorys/**                     @sangorys
 ioDisk@ctrlesc/**                                  @somboku
@@ -100,7 +102,6 @@ printers@linux-man/**                              @linux-man
 profile-switcher@pixunil/**                        @pixunil
 ptt@thbemme/**                                     @thbemme
 qredshift@quintao/**                               @raphaelquintao
-radio@driglu4it/**                                 @jonath92
 rancher@centurix/**                                @centurix
 ratecurrency@magner/**                             @AleksiMagner
 redshift@marvel4u/**                               @marvel4u
@@ -185,6 +186,7 @@ xsession@claudiux/**                               @claudiux
 # paneldo@beatlink
 # places-bookmarks@dmo60.de
 # places-with-terminal@mtwebster
+# radio@driglu4it
 # rwall@typicalfoobar
 # screen-inhibit@mtwebster
 # scripts@paucapo.com

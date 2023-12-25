@@ -86,7 +86,7 @@ const formatTextWrap = (text, maxLineLength) => {
   }, '');
 }
 /* global values */
-let players_without_seek_support = ['spotify', 'totem', 'xplayer', 'gnome-mplayer', 'pithos',
+let players_without_seek_support = ['telegram desktop', 'spotify', 'totem', 'xplayer', 'gnome-mplayer', 'pithos',
     'smplayer'];
 let players_with_seek_support = [
     'clementine', 'banshee', 'rhythmbox', 'rhythmbox3', 'pragha', 'quodlibet',
@@ -1034,6 +1034,7 @@ class Sound150Applet extends Applet.TextIconApplet {
         this.settings = new Settings.AppletSettings(this, metadata.uuid, instanceId);
         this.settings.bind("showtrack", "showtrack", this.on_settings_changed);
         this.settings.bind("middleClickAction", "middleClickAction");
+        this.settings.bind("middleShiftClickAction", "middleShiftClickAction");
         this.settings.bind("horizontalScroll", "horizontalScroll")
         this.settings.bind("showalbum", "showalbum", this.on_settings_changed);
         this.settings.bind("truncatetext", "truncatetext", this.on_settings_changed);
@@ -1068,6 +1069,11 @@ class Sound150Applet extends Applet.TextIconApplet {
         this.settings.bind("tooltipShowVolume", "tooltipShowVolume", this.on_settings_changed);
         this.settings.bind("tooltipShowPlayer", "tooltipShowPlayer", this.on_settings_changed);
         this.settings.bind("tooltipShowArtistTitle", "tooltipShowArtistTitle", this.on_settings_changed);
+
+        this.settings.bind("alwaysCanChangeMic", "alwaysCanChangeMic", this.on_settings_changed);
+
+        this.settings.bind("volume", "volume");
+        this.settings.bind("showVolumeLevelNearIcon", "showVolumeLevelNearIcon", this.volume_near_icon);
 
         Main.themeManager.connect("theme-set", Lang.bind(this, this._theme_set));
 
@@ -1156,7 +1162,10 @@ class Sound150Applet extends Applet.TextIconApplet {
         this.mute_in_switch = new PopupMenu.PopupSwitchIconMenuItem(_("Mute input"), false, "microphone-sensitivity-muted", St.IconType.SYMBOLIC);
         this._applet_context_menu.addMenuItem(this.mute_out_switch);
         this._applet_context_menu.addMenuItem(this.mute_in_switch);
-        this.mute_in_switch.actor.hide();
+        if (!this.alwaysCanChangeMic)
+            this.mute_in_switch.actor.hide();
+        else
+            this.mute_in_switch.actor.show();
 
         this._applet_context_menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
 
@@ -1228,7 +1237,16 @@ class Sound150Applet extends Applet.TextIconApplet {
         else
             this.setAppletTextIcon();
 
+       if (this.alwaysCanChangeMic)
+            this.mute_in_switch.actor.show();
+        else if (this._recordingAppsNum === 0)
+            this.mute_in_switch.actor.hide();
+
         this._changeActivePlayer(this._activePlayer);
+    }
+
+    on_applet_added_to_panel() {
+        this.volume_near_icon()
     }
 
     on_applet_removed_from_panel() {
@@ -1275,23 +1293,20 @@ class Sound150Applet extends Applet.TextIconApplet {
         if (!this._input)
             return;
 
-        if (this._input.is_muted) {
-            this._input.change_is_muted(false);
-            this.mute_in_switch.setToggleState(false);
-        } else {
-            this._input.change_is_muted(true);
-            this.mute_in_switch.setToggleState(true);
-        }
+        let newStatus = !this._input.is_muted;
+        this._input.change_is_muted(newStatus);
+        this.mute_in_switch.setToggleState(newStatus);
     }
 
     _onScrollEvent(actor, event) {
-        let direction = event.get_scroll_direction();
+        const direction = event.get_scroll_direction();
 
         if (direction == Clutter.ScrollDirection.SMOOTH) {
             return Clutter.EVENT_PROPAGATE;
         }
 
         this._volumeChange(direction);
+        this.volume_near_icon()
     }
 
     _volumeChange(direction) {
@@ -1355,22 +1370,39 @@ class Sound150Applet extends Applet.TextIconApplet {
         } else {
             this._applet_tooltip.hide();
         }
+        this.volume_near_icon()
     }
 
     _onButtonPressEvent(actor, event) {
         let buttonId = event.get_button();
+        let modifiers = Cinnamon.get_event_state(event);
+        let shiftPressed = (modifiers & Clutter.ModifierType.SHIFT_MASK);
 
         // mute or play / pause players on middle click
         if (buttonId === 2) {
-            if (this.middleClickAction === "mute") {
-                this._toggle_out_mute();
-                this._toggle_in_mute();
-            } else if (this.middleClickAction === "out_mute")
-                this._toggle_out_mute();
-            else if (this.middleClickAction === "in_mute")
-                this._toggle_in_mute();
-            else if (this.middleClickAction === "player")
-                this._players[this._activePlayer]._mediaServerPlayer.PlayPauseRemote();
+            if (shiftPressed) {
+                if (this.middleShiftClickAction === "mute") {
+                    if (this._output.is_muted === this._input.is_muted)
+                        this._toggle_in_mute();
+                    this._toggle_out_mute();
+                } else if (this.middleShiftClickAction === "out_mute")
+                    this._toggle_out_mute();
+                else if (this.middleShiftClickAction === "in_mute")
+                    this._toggle_in_mute();
+                else if (this.middleShiftClickAction === "player")
+                    this._players[this._activePlayer]._mediaServerPlayer.PlayPauseRemote();
+            } else {
+                if (this.middleClickAction === "mute") {
+                    if (this._output.is_muted === this._input.is_muted)
+                        this._toggle_in_mute();
+                    this._toggle_out_mute();
+                } else if (this.middleClickAction === "out_mute")
+                    this._toggle_out_mute();
+                else if (this.middleClickAction === "in_mute")
+                    this._toggle_in_mute();
+                else if (this.middleClickAction === "player")
+                    this._players[this._activePlayer]._mediaServerPlayer.PlayPauseRemote();
+            }
         } else if (buttonId === 8) { // previous and next track on mouse buttons 4 and 5 (8 and 9 by X11 numbering)
             this._players[this._activePlayer]._mediaServerPlayer.PreviousRemote();
         } else if (buttonId === 9) {
@@ -1425,6 +1457,7 @@ class Sound150Applet extends Applet.TextIconApplet {
             // if we have no active player show the output icon
             this.set_applet_icon_symbolic_name(this._outputIcon);
         }
+        this.volume_near_icon()
     }
 
     setAppletIcon(player, path) {
@@ -1461,10 +1494,10 @@ class Sound150Applet extends Applet.TextIconApplet {
             else {
                 title_text = player._title + ' - ' + player._artist;
             }
-            //~ if (this.truncatetext < title_text.length) {
-                //~ title_text = title_text.substr(0, this.truncatetext) + "...";
-            //~ }
-            title_text = formatTextWrap(title_text, this.truncatetext);
+            const glyphs = Util.splitByGlyph(title_text);
+            if (glyphs.length > this.truncatetext) {
+                title_text = glyphs.slice(0, this.truncatetext - 3).join("") + "...";
+            }
         }
         this.set_applet_label(title_text);
         //~ log("setAppletText: title_text:\n"+title_text, true)
@@ -1498,6 +1531,7 @@ class Sound150Applet extends Applet.TextIconApplet {
             }
         }
         this.set_applet_tooltip(tooltips.join("\n"));
+        this.volume_near_icon();
     }
 
     _isInstance(busName) {
@@ -1880,6 +1914,9 @@ class Sound150Applet extends Applet.TextIconApplet {
                         this._inputSection.actor.hide();
                         this.mute_in_switch.actor.hide();
                     }
+
+                    if (this.alwaysCanChangeMic)
+                        this.mute_in_switch.actor.show();
                 }
                 this._streams.splice(i, 1);
                 break;
@@ -1909,6 +1946,16 @@ class Sound150Applet extends Applet.TextIconApplet {
         let command = "cinnamon-settings sound -t 4";
         Util.spawnCommandLine(command);
     }
+
+    volume_near_icon() {
+        if (this.showVolumeLevelNearIcon) {
+            this._applet_label.set_text(""+this.volume);
+            this.hide_applet_label(false);
+        } else {
+            this._applet_label.set_text("");
+            this.hide_applet_label(true);
+        }
+      }
 }
 
 function main(metadata, orientation, panel_height, instanceId) {
